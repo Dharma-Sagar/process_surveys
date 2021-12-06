@@ -4,6 +4,7 @@ from openpyxl import load_workbook
 import docx
 
 
+# from https://github.com/python-openxml/python-docx/issues/25#issuecomment-400787031
 def list_number(doc, par, prev=None, level=None, num=True):
     """
     Makes a paragraph into a list item with a specific level and
