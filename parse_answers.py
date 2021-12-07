@@ -109,7 +109,7 @@ def parse_sheets(xlsx):
     wb = load_workbook(xlsx)
     columns = [col for col in wb.active.iter_cols()]
     header, data = [c.value for c in columns[1]], [[c.value for c in col] for col in columns[2:]]
-    organized = {}
+    organized = []
     for col in data:
         question = col[0]
         answers = {}
@@ -117,14 +117,14 @@ def parse_sheets(xlsx):
             if i == 0:
                 continue
             answers[header[i]] = col[i]
-        organized[question] = answers
+        organized.append((question, answers))
 
     return organized
 
 
 def export_docx(data, out_file):
     doc = docx.Document()
-    for question, answers in data.items():
+    for question, answers in data:
         doc.add_heading(question, level=1)
         prev = None
         for answerer, answer in answers.items():
