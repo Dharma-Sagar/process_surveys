@@ -133,7 +133,7 @@ def export_docx(data, out_file):
             par = doc.add_paragraph('', style='List Number')
             par.add_run(answerer, 'Emphasis').font.bold = True
             par.add_run(' — ')
-            par.add_run(answer)
+            par.add_run(str(answer))
             if prev:
                 list_number(doc, par, prev=prev, num=True)
             else:
